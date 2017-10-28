@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package vn.com.iu.student.demogame;
+import java.awt.*;  
+import javax.swing.*;
 
 /**
  *
@@ -16,8 +18,10 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Screen screen = new Screen();
         
+       Menu menu = new Menu();
+       
+       
     }
     
 }
