@@ -3,6 +3,8 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -28,7 +30,9 @@ public frame(int width,int height, String title, game game){
                 button2.setVisible(true);
                 frame.add(button2);
                 //frame.setLayout(null); 
-             
+                //Graphics g ;
+                //Image i=Toolkit.getDefaultToolkit().getImage("C:\\\\Users\\\\nguye\\\\Desktop\\\\Regular_Zombie.png");  
+               // g.drawImage(i, 0, 0, 1400, 640, null);
                
                frame.add(game);
                 frame.setVisible(true);

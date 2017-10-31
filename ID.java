@@ -1,5 +1,5 @@
 package deadlyzombies;
 
 public enum ID {
-zombies(),plant();
+zombies(),plants(), bullet();
 }
