@@ -22,5 +22,7 @@ package deadlyzombies;
 	        public void removeObject(Object object){
 	                this.object.remove(object);
 	        }
+		public GetObject(Object object)
+			this.object = object; 
 	}
 
