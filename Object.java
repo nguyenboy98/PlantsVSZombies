@@ -1,21 +1,26 @@
 package deadlyzombies;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 public abstract class Object {
 protected int x,y;
 protected int velX,velY;
 protected ID id;
+
 public Object(int x, int y, ID id) {
     this.x = x;
     this.y = y;
     //this.velX = velX;
     //this.velY = velY;
     this.id=id;
+
+   
 }
  
 public abstract void tick();
 public abstract void render(Graphics g);
+public abstract Rectangle getBounds();
 public int getX() {
     return x;
 }
@@ -54,5 +59,6 @@ public ID getId(){
 public void setId(ID id) {
 	this.id=id;
 }
+
 
 }

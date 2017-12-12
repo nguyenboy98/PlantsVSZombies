@@ -23,12 +23,12 @@ public frame(int width,int height, String title, game game){
                 button.setBounds(30, 2, 100, 50);
                 button.setVisible(true);
                 //button.doClick();
-                frame.add(button);
+               // frame.add(button);
                 //frame.setLayout(null);
                  JButton button2 = new JButton("Credit");
                 button2.setBounds(30, 50, 100, 50);
                 button2.setVisible(true);
-                frame.add(button2);
+                //frame.add(button2);
                 //frame.setLayout(null); 
                 //Graphics g ;
                 //Image i=Toolkit.getDefaultToolkit().getImage("C:\\\\Users\\\\nguye\\\\Desktop\\\\Regular_Zombie.png");  
