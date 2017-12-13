@@ -32,7 +32,7 @@ public frame(int width,int height, String title, game game){
                 //frame.setLayout(null); 
                 //Graphics g ;
                 //Image i=Toolkit.getDefaultToolkit().getImage("C:\\\\Users\\\\nguye\\\\Desktop\\\\Regular_Zombie.png");  
-               // g.drawImage(i, 0, 0, 1400, 640, null);
+                //g.drawImage(i, 0, 0, 1400, 640, null);
                
                frame.add(game);
                 frame.setVisible(true);

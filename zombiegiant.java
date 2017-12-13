@@ -21,7 +21,7 @@ public class zombiegiant extends Object {
 	private BufferedImage bg,Regular_Zombie;
 	//static int HEALTH=100;
 	
-	protected int HEALTH=200 ;
+	protected int HEALTH=200;
 	public zombiegiant(int x, int y, ID id,Handler handler) {
 		
 		super(x, y, id);
@@ -33,11 +33,11 @@ public class zombiegiant extends Object {
 		this.HEALTH=HEALTH;
 	
 		
-		handler.addObject(new bullet(295,y+20,ID.bullet,handler) );
+		//handler.addObject(new bullet(295,y+20,ID.bullet,handler) );
 		
 	}
 	 public Rectangle getBounds(){
-         return new Rectangle((int) x,(int) y, 32, 32);
+         return new Rectangle((int) x,(int) y, 100,100 );
          
  }
 public void tick() {
@@ -76,7 +76,7 @@ private void collision(){
                     	}
                    //handler.removeObject(handler.object.get(i));
                     
-                    handler.addObject(new bullet(295,y+20,ID.bullet,handler) );
+                   // handler.addObject(new bullet(295,y+20,ID.bullet,handler) );
                     }
             }
     if(tempObject.getId() == ID.plants/* || tempObject.getId()==ID.FastEnemy||tempObject.getId()== ID.SmartEnemy*/){
@@ -85,13 +85,13 @@ private void collision(){
  }
 public void render (Graphics g) {
 	//g.drawImage(LoadImage.zombie,x,y,100,100,null);
-	g.setColor(new Color(255,255,255,128));
-	g.fillRect(x,y,32,32);
-if(HEALTH==5) {Image i=Toolkit.getDefaultToolkit().getImage("F:\\\\other\\\\zombie-vs-plant\\\\zombie-vs-plant\\\\zombie vs plant\\\\image\\\\ex2.gif");  
-                g.drawImage(i, x, y, 100, 100, null);
+	g.setColor(new Color(255,255,255,0));
+	g.fillRect(x,y,100,100);
+if(HEALTH==5) {Image i=Toolkit.getDefaultToolkit().getImage("F:\\\\other\\\\zombie-vs-plant\\\\zombie-vs-plant\\\\zombie vs plant\\\\image\\\\dieX.png");  
+                g.drawImage(i, x, y-30, 100, 150, null);
                 }
 else { Image i=Toolkit.getDefaultToolkit().getImage("F:\\other\\zombie-vs-plant\\zombie-vs-plant\\zombie vs plant\\image\\giphy.gif");  
-        g.drawImage(i, x, y, 100, 100, null);}
+        g.drawImage(i, x-85, y-150, 300, 300, null);}
         
        
 

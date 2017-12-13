@@ -1,4 +1,4 @@
-package deadlyzombies;
+ package deadlyzombies;
 import java.awt.Canvas;
 
 import java.awt.Color;
@@ -27,8 +27,18 @@ public static final int WIDTH = 1400, HEIGHT = 600;// WIDTH / 12 * 9;
 		int k4=8;
 		int k5=2;
 		int k6=6;
+		private menu menu;
+		private help help;
 		public static int win=0;
-      public game() {
+		private enum STATE {
+			MENU,HELP,
+			GAME;
+		}
+		private STATE State=STATE.MENU;
+		
+       
+		public game() {
+    	  
     	  int x=0, y=0;
     	  new frame(WIDTH,HEIGHT,"DEADLY ZOMBIES",this);
     	  handler = new Handler();
@@ -38,7 +48,8 @@ public static final int WIDTH = 1400, HEIGHT = 600;// WIDTH / 12 * 9;
     	  handler.addObject(new plants(250,250,ID.plants,handler) );
     	  handler.addObject(new plants(250,350,ID.plants,handler) );
     	  handler.addObject(new plants(250,450,ID.plants,handler) );
-    	 
+    	 menu=new menu();
+    	 help=new help();
     	  //r=new Random();
     	  //handler.addObject(new zombies(0,0,ID.zombies));
     	 /* for (int i=0;i<5;i++)
@@ -82,8 +93,8 @@ public static final int WIDTH = 1400, HEIGHT = 600;// WIDTH / 12 * 9;
                                 tick();
                                 delta--;
                         }
-                        if(running)
-                                render();
+                       if(running)
+                               render();
                         frames++;
                         if(System.currentTimeMillis() - timer > 1000){
                                 timer += 240;
@@ -94,8 +105,12 @@ public static final int WIDTH = 1400, HEIGHT = 600;// WIDTH / 12 * 9;
                 stop();
         }
         private void tick(){
+        	if(State==STATE.GAME) {
+        		
+        	
                handler.tick();
-        }
+               
+        }}
         
        private void render(){
             BufferStrategy bs = this.getBufferStrategy();
@@ -106,7 +121,8 @@ public static final int WIDTH = 1400, HEIGHT = 600;// WIDTH / 12 * 9;
             Graphics g = bs.getDrawGraphics();
             g.setColor(Color.black);
            g.fillRect(0, 0, WIDTH, HEIGHT);
-            Image i=Toolkit.getDefaultToolkit().getImage("F:\\other\\zombie-vs-plant\\zombie-vs-plant\\zombie vs plant\\image\\Frontyard.jpg");  
+           if(State==STATE.GAME) {
+        	Image i=Toolkit.getDefaultToolkit().getImage("F:\\other\\zombie-vs-plant\\zombie-vs-plant\\zombie vs plant\\image\\Frontyard.jpg");  
             g.drawImage(i, 0, 0, 1400, 600, null);
             Image i1=Toolkit.getDefaultToolkit().getImage("F:\\other\\zombie-vs-plant\\zombie-vs-plant\\zombie vs plant\\image\\select1.jpg");  
             g.drawImage(i1, 0, 0, 90, 90, null);
@@ -131,6 +147,27 @@ public static final int WIDTH = 1400, HEIGHT = 600;// WIDTH / 12 * 9;
           handler.render(g);
             g.dispose();
             bs.show();
+           }
+            if (State==STATE.MENU){
+            	Image i=Toolkit.getDefaultToolkit().getImage("F:\\other\\zombie-vs-plant\\zombie-vs-plant\\zombie vs plant\\image\\menux2.gif");  
+                g.drawImage(i, 0, 0, 1400, 600, null);
+                Image i2=Toolkit.getDefaultToolkit().getImage("F:\\other\\zombie-vs-plant\\zombie-vs-plant\\zombie vs plant\\image\\title.png");  
+                g.drawImage(i2, 480, 0, 480,240 , null);
+            	menu.render(g);
+            	g.dispose();
+                bs.show();
+            }
+             if(State==STATE.HELP) {
+            	Image i=Toolkit.getDefaultToolkit().getImage("F:\\other\\zombie-vs-plant\\zombie-vs-plant\\zombie vs plant\\image\\rule.png");  
+                g.drawImage(i, 0, 0, 400, 600, null);
+                Image i1=Toolkit.getDefaultToolkit().getImage("F:\\other\\zombie-vs-plant\\zombie-vs-plant\\zombie vs plant\\image\\rule.png");  
+                g.drawImage(i1, 420, 0, 400, 600, null);
+                Image i2=Toolkit.getDefaultToolkit().getImage("F:\\other\\zombie-vs-plant\\zombie-vs-plant\\zombie vs plant\\image\\rule.png");  
+                g.drawImage(i2, 840, 0, 400, 600, null); 
+                help.render(g);
+            	g.dispose();
+                bs.show();
+            }
             
     }
        
@@ -141,12 +178,16 @@ public static final int WIDTH = 1400, HEIGHT = 600;// WIDTH / 12 * 9;
 		
             
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mousePressed(MouseEvent e) {
 			System.out.println("Mouse Clicked");
 			int x = e.getX();
 			int y= e.getY();
-			
-			
+			if(State==STATE.MENU) {
+				if(x>20&&x<170&&y>20&&y<90) {State=STATE.GAME;}
+				if(x>20&&x<170&&y>95&&y<165) {State=STATE.HELP;}
+				if(x>20&&x<170&&y>170&&y<240) {System.exit(1);}
+			}
+			if(State==STATE.GAME){
 			if(x>0 && x<90 && y>0 && y<90){ n=1; }
 			if(x>0 && x<90 && y>92 && y<182){n=2; }
 			if(x>0 && x<90 && y>184 && y<274){n=3;}
@@ -241,8 +282,9 @@ public static final int WIDTH = 1400, HEIGHT = 600;// WIDTH / 12 * 9;
 					}
 		  			}*/
 				}
-			System.out.print("x= "+ x +",y= " + y );	
+			//System.out.print("x= "+ x +",y= " + y );	
 		}
+	}
 		@Override
 		public void mouseEntered(MouseEvent e) {
 			
@@ -256,7 +298,7 @@ public static final int WIDTH = 1400, HEIGHT = 600;// WIDTH / 12 * 9;
 			
 		}
 		@Override
-		public void mousePressed(MouseEvent e) {
+		public void mouseClicked(MouseEvent e) {
 		
 			
 			

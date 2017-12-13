@@ -20,19 +20,19 @@ public class zombiefootball extends Object {
 	private BufferedImage bg,Regular_Zombie;
 	//static int HEALTH=100;
 	
-	protected int HEALTH=70;
+	protected int HEALTH=40;
 	public zombiefootball(int x, int y, ID id,Handler handler) {
 		
 		super(x, y, id);
 	    //velX=r.nextInt(4)+1;
 		//velY=r.nextInt(4);
-		velX=1;
+		velX=2;
 		
 		this.handler=handler;
 		this.HEALTH=HEALTH;
 	
 		
-		handler.addObject(new bullet(295,y+20,ID.bullet,handler) );
+		//handler.addObject(new bullet(295,y+20,ID.bullet,handler) );
 		
 	}
 	 public Rectangle getBounds(){
@@ -75,7 +75,7 @@ private void collision(){
                     	}
                    //handler.removeObject(handler.object.get(i));
                     
-                    handler.addObject(new bullet(295,y+20,ID.bullet,handler) );
+                   //handler.addObject(new bullet(295,y+20,ID.bullet,handler) );
                     }
             }
     if(tempObject.getId() == ID.plants/* || tempObject.getId()==ID.FastEnemy||tempObject.getId()== ID.SmartEnemy*/){
@@ -87,11 +87,11 @@ public void render (Graphics g) {
 	//g.drawImage(LoadImage.zombie,x,y,100,100,null);
 	g.setColor(new Color(255,255,255,0));
 	g.fillRect(x,y,30,30);
-if(HEALTH==5) {Image i=Toolkit.getDefaultToolkit().getImage("C:\\Users\\pc\\Desktop\\zombiefbdie.gif");  
-                g.drawImage(i, x, y, 100, 100, null);
+if(HEALTH==5) {Image i=Toolkit.getDefaultToolkit().getImage("C:\\Users\\pc\\Desktop\\zombiefbdie3.gif");  
+                g.drawImage(i, x-10, y, 100, 100, null);
                 }
 else { Image i=Toolkit.getDefaultToolkit().getImage("C:\\\\\\\\Users\\\\\\\\pc\\\\\\\\Desktop\\\\\\\\zombiefootball.gif");  
-        g.drawImage(i, x, y, 100, 100, null);}
+        g.drawImage(i, x-10, y, 100, 100, null);}
         
        
 

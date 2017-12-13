@@ -61,7 +61,7 @@ public void tick() {
  }*/
 
 public void render (Graphics g) {
-	g.setColor(new Color(255,255,255,128));
+	g.setColor(new Color(255,255,255,0));
 	g.fillRect(x,y,10,10);
 
         Image i=Toolkit.getDefaultToolkit().getImage("F:\\other\\zombie-vs-plant\\zombie-vs-plant\\zombie vs plant\\image\\bullet.png");  

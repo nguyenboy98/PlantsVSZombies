@@ -19,6 +19,7 @@ public class plants extends Object {
 	Handler handler;
 	private BufferedImage bg,plants;
 	private int HEALTH=100;
+	int t=0;
 	public plants(int x, int y, ID id,Handler handler) {
 		super(x, y, id);
 	    //velX=r.nextInt(4)+1;
@@ -33,10 +34,16 @@ public void tick() {
 	/*if(x==game.WIDTH||y==game.HEIGHT||x==0||y==0)
 	{velX=-velX;	
 	 velY=-velY;}*/
-	
+	t++;
+	for(int i = 0; i < handler.object.size(); i++){
+	    Object tempObject = handler.object.get(i);
+	    if(tempObject.getId() == ID.zombies && tempObject.getY() == y+7 &&t%50==0|| tempObject.getId()==ID.zombiefly&&tempObject.getY() == y+7 &&t%50==0|| tempObject.getId()==ID.zombiefootball&&tempObject.getY() == y+7 &&t%50==0|| tempObject.getId()==ID.zombiebuck&&tempObject.getY() == y+7 &&t%50==0|| tempObject.getId()==ID.zombiegiant&&tempObject.getY() == y+7 &&t%50==0|| tempObject.getId()==ID.zombiehard&&tempObject.getY() == y+7 &&t%50==0)
+	 {handler.addObject(new bullet(295,y+20,ID.bullet,handler) );}}
 		x+=velX;
 		y+=velY;
 		collision();
+		System.out.println(y);
+		if(t>250) {t=0;}
 }
 private void collision(){
     for(int i = 0; i < handler.object.size(); i++){
@@ -57,12 +64,12 @@ private void collision(){
     }
 }
 public void render (Graphics g) {
-	g.setColor(new Color(255,255,255,128));
+	g.setColor(new Color(255,255,255,0));
 	g.fillRect(x+30,y+30,60,50);
 
         Image i=Toolkit.getDefaultToolkit().getImage("F:\\other\\zombie-vs-plant\\zombie-vs-plant\\zombie vs plant\\image\\plant.gif");  
         g.drawImage(i, x, y, 100, 100, null);
        
-
+        
 	}
 }
