@@ -13,15 +13,15 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
-public class Plants extends Object {
+public class IcePLants extends Object {
 //Random r= new Random();
     //ID (id) = new ID;
 	Handler handler;
 	private BufferedImage bg,plants;
-	private int HEALTH=100;
+	private int HEALTH=300;
 	int t=0;
 
-	public Plants(int x, int y, ID id,Handler handler) {
+	public IcePLants(int x, int y, ID id,Handler handler) {
 		super(x, y, id);
 	    //velX=r.nextInt(4)+1;
 		//velY=r.nextInt(4);
@@ -51,11 +51,10 @@ private void collision(){
     Object tempObject = handler.object.get(i);
     if(tempObject.getId() == ID.zombiehard ||tempObject.getId()== ID.zombiebuck||tempObject.getId()== ID.zombiefly||tempObject.getId()== ID.zombiefootball||tempObject.getId()== ID.zombiegiant||tempObject.getId()== ID.zombies){
                     if(getBounds().intersects(tempObject.getBounds())){
-                    
-                    	
+                    	System.out.print("sucess" );
                     	HEALTH-=1;
                     	if(HEALTH==0)
-                    	{handler.removeObject(handler.object.get(i));
+                    	{//handler.removeObject(handler.object.get(i));
                     		handler.removeObject(this);
                     		Game.countplants--;
                     	}
@@ -63,17 +62,16 @@ private void collision(){
                     	
                     }
             }
-    if(tempObject.getId() == ID.zombies && tempObject.getY() == y+7 &&t%50==0|| tempObject.getId()==ID.zombiefly&&tempObject.getY() == y+7 &&t%50==0|| tempObject.getId()==ID.zombiefootball&&tempObject.getY() == y+7 &&t%50==0|| tempObject.getId()==ID.zombiebuck&&tempObject.getY() == y+7 &&t%50==0|| tempObject.getId()==ID.zombiegiant&&tempObject.getY() == y+7 &&t%50==0|| tempObject.getId()==ID.zombiehard&&tempObject.getY() == y+7 &&t%50==0)
-	 {handler.addObject(new Bullet(315,y+35,ID.bullet,handler) );}
+    if(tempObject.getId() == ID.zombies && tempObject.getY() == y+7 &&t%250==0|| tempObject.getId()==ID.zombiefly&&tempObject.getY() == y+7 &&t%250==0|| tempObject.getId()==ID.zombiefootball&&tempObject.getY() == y+7 &&t%250==0|| tempObject.getId()==ID.zombiebuck&&tempObject.getY() == y+7 &&t%250==0|| tempObject.getId()==ID.zombiegiant&&tempObject.getY() == y+7 &&t%250==0|| tempObject.getId()==ID.zombiehard&&tempObject.getY() == y+7 &&t%250==0)
+	 {handler.addObject(new FireBullet(480,y+30,ID.firebullet,handler) );}
     }
 }
 public void render (Graphics g) {
 	g.setColor(new Color(255,255,255,0));
 	g.fillRect(x+30,y+30,60,50);
-   if(HEALTH<20) {Image i=Toolkit.getDefaultToolkit().getImage("./res/plantsdie.gif");  
-   g.drawImage(i, x+20, y+27, 60, 60, null);}
-   else{Image i=Toolkit.getDefaultToolkit().getImage("./res/plant.gif");  
-        g.drawImage(i, x, y, 100, 100, null);}
+
+        Image i=Toolkit.getDefaultToolkit().getImage("./res/iceplants.gif");  
+        g.drawImage(i, x, y, 100, 100, null);
        
         
 	}
